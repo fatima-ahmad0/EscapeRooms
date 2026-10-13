@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07110f" />
+  <title>ESC-C-APE | The Last Bug</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ESC-C-APE home"><span class="brand-mark">[&gt;_]</span> ESC-C-APE<span class="brand-dot">.exe</span></a>
+    <div class="top-status"><span class="pulse"></span> SYSTEM STATUS: COMPROMISED</div>
+    <div class="header-controls"><button class="sound-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☼ LIGHT MODE</button><button class="sound-btn" id="soundToggle" type="button" title="Toggle sound effects">SFX: ON</button></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      
+      <h1>THE LAST <span>BUG</span></h1>
+      <p class="hero-copy">One rogue program. Seven corrupted files. One way out.<br/>Can your team debug its way to freedom?</p>
+      
+    </section>
+
+    <section class="briefing panel" id="briefing">
+      <div class="panel-heading"><span class="status-dot"></span> INCOMING TRANSMISSION <span class="heading-code">MSG_001</span></div>
+      <div class="briefing-content">
+        <div class="avatar" aria-hidden="true">AI<span>_</span></div>
+        <div>
+          <h2>Hey, humans. We have a tiny problem.</h2>
+          <p>BUG.exe has taken over the escape system. Clear seven increasingly difficult C challenges—including a side-by-side code showdown—then crack the final vault before time runs out.</p>
+          <p class="muted">Warning: the compiler is in a terrible mood today.</p>
+        </div>
+      </div>
+      <div class="setup-row">
+        <label for="teamName">TEAM NAME</label>
+        <input id="teamName" maxlength="24" required placeholder="e.g. Segmentation Fault" autocomplete="off" />
+        <button class="primary-btn" id="startBtn" type="button">INITIALIZE MISSION <span>→</span></button>
+      </div>
+      <p class="tiny-note">20:00 timer · 7 escalating levels · hints cost 3 points · only 2 attempts at the final vault</p>
+    </section>
+
+    <section class="game-layout hidden" id="game">
+      <aside class="sidebar panel">
+        <div class="panel-heading">MISSION CONTROL <span class="heading-code">LIVE</span></div>
+        <div class="timer-wrap">
+          <div class="timer-label">TIME REMAINING</div>
+          <div class="timer" id="timer">20:00</div>
+          <div class="timer-track"><div id="timerBar"></div></div>
+        </div>
+        <div class="team-card"><span class="muted small">ACTIVE TEAM</span><strong id="activeTeam">UNNAMED TEAM</strong></div>
+        <div class="stats">
+          <div><span class="muted small">SCORE</span><strong id="score">0</strong></div>
+          <div><span class="muted small">HINTS USED</span><strong id="hintsUsed">0</strong></div>
+        </div>
+        <div class="progress-title"><span>ACCESS PROGRESS</span><span id="progressText">0 / 7</span></div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+        <div class="stage-list" id="stageList">
+          <div class="stage-item active" data-stage="0"><span class="stage-number">01</span><span><strong>NUMBER SCRAMBLER</strong><small>Integer logic</small></span><span class="stage-state">●</span></div>
+          <div class="stage-item locked" data-stage="1"><span class="stage-number">02</span><span><strong>SELECTIVE LOOP</strong><small>Loop tracing</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="2"><span class="stage-number">03</span><span><strong>PAIRING PROTOCOL</strong><small>Nested loops</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="3"><span class="stage-number">04</span><span><strong>SNIPPET SHOWDOWN</strong><small>Choose correct code</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="4"><span class="stage-number">05</span><span><strong>INCREMENT AMBUSH</strong><small>Pre/post increment</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="5"><span class="stage-number">06</span><span><strong>ARRAY INTERROGATION</strong><small>Array + conditions</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="6"><span class="stage-number">07</span><span><strong>LOGIC TRAPDOOR</strong><small>Short-circuit logic</small></span><span class="stage-state">🔒</span></div>
+        </div>
+        <div class="sidebar-warning"><span>⚠</span><p><strong>REMEMBER</strong><br/>No Googling. No panic. Definitely no blaming the keyboard.</p></div>
+      </aside>
+
+      <section class="puzzle panel" id="puzzlePanel">
+        <div class="panel-heading"><span class="status-dot"></span> <span id="fileLabel">FILE_01.C</span> <span class="heading-code" id="fileStatus">CORRUPTED</span></div>
+        <div class="puzzle-inner">
+          <div class="puzzle-kicker" id="puzzleKicker">CHALLENGE 01 / OUTPUT PREDICTION</div>
+          <h2 id="puzzleTitle">The Access Filter</h2>
+          <p id="puzzleDescription">A security check accepts a value only when both conditions are true. Trace the loop carefully.</p>
+          <div class="code-window">
+            <div class="code-title"><span><i></i><i></i><i></i> main.c</span><span> C SOURCE</span></div>
+            <div id="codeBlock" class="code-content">int values[] = {4, 7, 10, 13, 16};
+int i, count = 0;
+for (i = 0; i &lt; 5; i++) {
+    if (values[i] &gt;= 10 &amp;&amp; values[i] % 2 == 0)
+        count++;
+}
+printf("%d", count);</div>
+          </div>
+          <div class="question-row"><span class="question-icon">?</span><p id="questionText">What value is printed?</p></div>
+          <form id="answerForm">
+            <label for="answerInput" id="answerLabel">ENTER YOUR ANSWER</label>
+            <div class="answer-row"><input id="answerInput" placeholder="Type answer here..." autocomplete="off" spellcheck="false" required /><button class="submit-btn" type="submit">SUBMIT ↵</button></div>
+          </form>
+          <div class="feedback" id="feedback" role="status" aria-live="polite">Awaiting input, carbon-based life form...</div>
+          <div class="puzzle-actions"><button class="text-btn" id="hintBtn" type="button">▸ REQUEST HINT <span>(−3 PTS)</span></button><span class="stage-points" id="stagePoints">15 PTS AVAILABLE</span></div>
+          <div class="hint-box hidden" id="hintBox"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="final-screen panel hidden" id="finalScreen">
+      <div class="victory-icon" id="finalIcon">✓</div>
+      <div class="eyebrow centered">MISSION REPORT / FINAL</div>
+      <h2 id="finalTitle">SYSTEM RESTORED</h2>
+      <p id="finalMessage">You defeated BUG.exe. The compiler is mildly impressed.</p>
+      <div class="final-stats">
+        <div><span>TEAM</span><strong id="finalTeam">TEAM</strong></div>
+        <div><span>FINAL SCORE</span><strong id="finalScore">0</strong></div>
+        <div><span>TIME LEFT</span><strong id="finalTime">00:00</strong></div>
+      </div>
+      
+      <button class="primary-btn" id="restartBtn" type="button">RETURN TO HOME ↩</button>
+      <p class="tiny-note">For the next team, use RETURN TO HOME to reset the mission and score.</p>
+    </section>
+
+  </main>
+
+  <footer><span>ESC-C-APE · C PROGRAMMING ESCAPE ROOM</span><span>THINK CLEARLY. CODE CAREFULLY.</span></footer>
+  <div class="key-reveal hidden" id="keyReveal" role="status" aria-live="assertive"><span>KEY ACQUIRED</span><strong id="earnedKey">?</strong></div>
+  <div class="code-modal hidden" id="codeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="code-modal-card"><div class="victory-icon">✓</div><p class="puzzle-kicker">VAULT ACCESS CONFIRMED</p><h2 id="modalTitle">ESCAPE CODE ACCEPTED</h2><p>The vault is opening. Get ready for your mission report.</p></div></div>
+  <button class="notepad-launch hidden" id="notepadToggle" type="button" aria-expanded="false" aria-controls="notepadPanel">✎ TEAM NOTEPAD</button>
+  <aside class="notepad-panel hidden" id="notepadPanel" aria-label="Optional team notepad">
+    <div class="notepad-header"><div><strong>TEAM NOTEPAD</strong><span>Private working space</span></div><button class="notepad-close" id="notepadClose" type="button" aria-label="Close notepad">×</button></div>
+    <label for="teamNotes">TYPE YOUR NOTES</label>
+    <textarea id="teamNotes" placeholder="Write calculations, trace loops, or jot down ideas…" spellcheck="false"></textarea>
+    <div class="draw-heading"><span>HAND-DRAWING BOARD</span><button class="notepad-tool" id="clearDrawing" type="button">CLEAR DRAWING</button></div>
+    <canvas id="drawingCanvas" width="640" height="260" aria-label="Hand drawing board"></canvas>
+    <p class="notepad-footnote">Use your mouse, finger, or stylus to draw. Notes stay here during this session.</p>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>
