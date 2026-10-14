@@ -12,14 +12,24 @@
   <header class="topbar">
     <a class="brand" href="#" aria-label="ESC-C-APE home"><span class="brand-mark">[&gt;_]</span> ESC-C-APE<span class="brand-dot">.exe</span></a>
     <div class="top-status"><span class="pulse"></span> SYSTEM STATUS: COMPROMISED</div>
-    <div class="header-controls"><button class="sound-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☼ LIGHT MODE</button><button class="sound-btn" id="soundToggle" type="button" title="Toggle sound effects">SFX: ON</button></div>
+    <div class="header-controls"><div class="theme-picker-wrap"><button class="sound-btn" id="themeToggle" type="button" aria-label="Choose a color theme" aria-expanded="false" aria-controls="themePalette">THEME ▦</button><div class="theme-palette hidden" id="themePalette" role="group" aria-label="Pick a theme color">
+      <p>Pick a theme color</p>
+      <div class="theme-swatches">
+        <button class="theme-swatch selected" type="button" data-theme="0" aria-label="Dark green theme" title="Dark green"><span style="--swatch-a:#07110f;--swatch-b:#76ffb2"></span></button>
+        <button class="theme-swatch" type="button" data-theme="1" aria-label="Light green theme" title="Light green"><span style="--swatch-a:#f2f8f4;--swatch-b:#087b4a"></span></button>
+        <button class="theme-swatch" type="button" data-theme="2" aria-label="Blue light theme" title="Blue light"><span style="--swatch-a:#eef5ff;--swatch-b:#1558a6"></span></button>
+        <button class="theme-swatch" type="button" data-theme="3" aria-label="Horror pink theme" title="Horror pink"><span style="--swatch-a:#10080d;--swatch-b:#ff4f78"></span></button>
+        <button class="theme-swatch" type="button" data-theme="4" aria-label="Ocean navy theme" title="Ocean navy"><span style="--swatch-a:#071a2c;--swatch-b:#78d8ff"></span></button>
+        <button class="theme-swatch" type="button" data-theme="5" aria-label="Amber theme" title="Amber"><span style="--swatch-a:#171208;--swatch-b:#ffd166"></span></button>
+      </div>
+    </div></div><button class="sound-btn" id="soundToggle" type="button" title="Toggle sound effects">SFX: ON</button></div>
   </header>
 
   <main class="shell">
     <section class="hero">
       
       <h1>THE LAST <span>BUG</span></h1>
-      <p class="hero-copy">One rogue program. Seven corrupted files. One way out.<br/>Can your team debug its way to freedom?</p>
+      <p class="hero-copy">One rogue program. Eight corrupted files. One way out.<br/>Can your team debug its way to freedom?</p>
       
     </section>
 
@@ -29,16 +39,18 @@
         <div class="avatar" aria-hidden="true">AI<span>_</span></div>
         <div>
           <h2>Hey, humans. We have a tiny problem.</h2>
-          <p>BUG.exe has taken over the escape system. Clear seven increasingly difficult C challenges—including a side-by-side code showdown—then crack the final vault before time runs out.</p>
+          <p>BUG.exe has taken over the escape system. Clear eight increasingly difficult C challenges—including a side-by-side code showdown—then crack the final vault before time runs out.</p>
           <p class="muted">Warning: the compiler is in a terrible mood today.</p>
         </div>
       </div>
       <div class="setup-row">
         <label for="teamName">TEAM NAME</label>
         <input id="teamName" maxlength="24" required placeholder="e.g. Segmentation Fault" autocomplete="off" />
+        <label for="roomPasscode">ROOM PASSCODE</label>
+        <input id="roomPasscode" maxlength="16" required placeholder="Enter previous-room passcode" autocomplete="off" autocapitalize="characters" spellcheck="false" />
         <button class="primary-btn" id="startBtn" type="button">INITIALIZE MISSION <span>→</span></button>
       </div>
-      <p class="tiny-note">20:00 timer · 7 escalating levels · hints cost 3 points · only 2 attempts at the final vault</p>
+      <p class="tiny-note">25:00 timer · 8 escalating levels · hints cost 3 points · 2 final-vault attempts · passcode from previous room required</p>
     </section>
 
     <section class="game-layout hidden" id="game">
@@ -46,7 +58,7 @@
         <div class="panel-heading">MISSION CONTROL <span class="heading-code">LIVE</span></div>
         <div class="timer-wrap">
           <div class="timer-label">TIME REMAINING</div>
-          <div class="timer" id="timer">20:00</div>
+          <div class="timer" id="timer">25:00</div>
           <div class="timer-track"><div id="timerBar"></div></div>
         </div>
         <div class="team-card"><span class="muted small">ACTIVE TEAM</span><strong id="activeTeam">UNNAMED TEAM</strong></div>
@@ -54,16 +66,17 @@
           <div><span class="muted small">SCORE</span><strong id="score">0</strong></div>
           <div><span class="muted small">HINTS USED</span><strong id="hintsUsed">0</strong></div>
         </div>
-        <div class="progress-title"><span>ACCESS PROGRESS</span><span id="progressText">0 / 7</span></div>
+        <div class="progress-title"><span>ACCESS PROGRESS</span><span id="progressText">0 / 8</span></div>
         <div class="progress-track"><div id="progressBar"></div></div>
         <div class="stage-list" id="stageList">
-          <div class="stage-item active" data-stage="0"><span class="stage-number">01</span><span><strong>NUMBER SCRAMBLER</strong><small>Integer logic</small></span><span class="stage-state">●</span></div>
-          <div class="stage-item locked" data-stage="1"><span class="stage-number">02</span><span><strong>SELECTIVE LOOP</strong><small>Loop tracing</small></span><span class="stage-state">🔒</span></div>
-          <div class="stage-item locked" data-stage="2"><span class="stage-number">03</span><span><strong>PAIRING PROTOCOL</strong><small>Nested loops</small></span><span class="stage-state">🔒</span></div>
-          <div class="stage-item locked" data-stage="3"><span class="stage-number">04</span><span><strong>SNIPPET SHOWDOWN</strong><small>Choose correct code</small></span><span class="stage-state">🔒</span></div>
-          <div class="stage-item locked" data-stage="4"><span class="stage-number">05</span><span><strong>INCREMENT AMBUSH</strong><small>Pre/post increment</small></span><span class="stage-state">🔒</span></div>
-          <div class="stage-item locked" data-stage="5"><span class="stage-number">06</span><span><strong>ARRAY INTERROGATION</strong><small>Array + conditions</small></span><span class="stage-state">🔒</span></div>
-          <div class="stage-item locked" data-stage="6"><span class="stage-number">07</span><span><strong>LOGIC TRAPDOOR</strong><small>Short-circuit logic</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item active" data-stage="0"><span class="stage-number">01</span><span><strong>THE ACCESS FILTER</strong><small>Multi-condition logic</small></span><span class="stage-state">●</span></div>
+          <div class="stage-item locked" data-stage="1"><span class="stage-number">02</span><span><strong>LOOP CHECKPOINT</strong><small>Conditional accumulation</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="2"><span class="stage-number">03</span><span><strong>PAIRING PROTOCOL</strong><small>Nested-loop filters</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="3"><span class="stage-number">04</span><span><strong>SNIPPET SHOWDOWN</strong><small>Compound conditions</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="4"><span class="stage-number">05</span><span><strong>INCREMENT AMBUSH</strong><small>Update-order tracing</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="5"><span class="stage-number">06</span><span><strong>RETURN SIGNAL</strong><small>Arrays + branch logic</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="6"><span class="stage-number">07</span><span><strong>DIGIT INTERROGATION</strong><small>While loop + digit extraction</small></span><span class="stage-state">🔒</span></div>
+          <div class="stage-item locked" data-stage="7"><span class="stage-number">08</span><span><strong>THE FINAL PATCH</strong><small>Nested loops + star pattern</small></span><span class="stage-state">🔒</span></div>
         </div>
         <div class="sidebar-warning"><span>⚠</span><p><strong>REMEMBER</strong><br/>No Googling. No panic. Definitely no blaming the keyboard.</p></div>
       </aside>
