@@ -9,4 +9,8 @@ Upload all files and the complete `assets/` folder to the root of your GitHub re
 The organizer passcode is checked by the front-end start form and is not shown on the home page. For a public static website, a front-end passcode is a convenience gate, not strong security: anyone inspecting client-side JavaScript can discover it.
 
 ## Question note
-The supplied Q1 questions and Q3 pattern questions are included. Because Q2 for the five teams had not been supplied in the conversation, five matching Q2 questions were added so each team has a complete three-question route. Please review the photographed Team 3 and Team 5 Q1 transcription against the notebook before the event.
+All five Q2 challenges now use explicitly numbered C snippets. Teams identify the lines with syntax or logic/output errors, add those line numbers, and submit the sum. The factorial question includes a comment explaining factorial. The website awards the configured key digit when the correct sum is entered.
+
+Organizer answer key for Q2: Team 1 = 33 (lines 02, 03, 05, 06, 07, 10); Team 2 = 23 (lines 02, 06, 07, 08); Team 3 = 14 (lines 06, 08); Team 4 = 6 (line 06); Team 5 = 6 (line 06).
+
+Note: the front-end answer values are visible to anyone who inspects client-side JavaScript. For a public static website, the passcode is a convenience gate, not strong security.
