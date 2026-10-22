@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#07110f" />
+  <meta name="theme-color" content="#07111c" />
+  <meta name="description" content="ESC-C-APE: The Last Bug — an animated team escape-room adventure built around C programming challenges." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/zone-01.webp" fetchpriority="high" />
   <title>ESC-C-APE | The Last Bug</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
   <div class="scanlines" aria-hidden="true"></div>
   <header class="topbar">
     <a class="brand" href="#" aria-label="ESC-C-APE home"><span class="brand-mark">[&gt;_]</span> ESC-C-APE<span class="brand-dot">.exe</span></a>
@@ -26,39 +30,77 @@
   </header>
 
   <main class="shell">
-    <section class="hero">
-      
+    <section class="hero" id="homeHero">
+      <div class="hero-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span> TEAM ESCAPE PROTOCOL <span class="hero-eyebrow-line"></span></div>
       <h1>THE LAST <span>BUG</span></h1>
-      <p class="hero-copy">One rogue program. Eight corrupted files. One way out.<br/>Can your team debug its way to freedom?</p>
-      
+      <p class="hero-copy">Five teams. Three challenges each. One escape.<br/>Think fast, trace the code, and recover your keys.</p>
+      <div class="hero-tags"><span>5 TEAM ROUTES</span><span>10 MINUTE COUNTDOWN</span><span>3 KEYS TO ESCAPE</span></div>
+      <div class="hero-coordinates">FACILITY 09 <span>///</span> CORE SECTOR UNKNOWN</div>
+      <div class="hero-scroll-cue"><span class="scroll-mouse"></span> BRIEFING BELOW</div>
     </section>
 
     <section class="briefing panel" id="briefing">
       <div class="panel-heading"><span class="status-dot"></span> INCOMING TRANSMISSION <span class="heading-code">MSG_001</span></div>
       <div class="briefing-content">
-        <div class="avatar" aria-hidden="true">AI<span>_</span></div>
+        <div class="avatar" aria-hidden="true"><img src="assets/byte-mascot.webp" alt="" /></div>
         <div>
           <h2>Hey, humans. We have a tiny problem.</h2>
-          <p>BUG.exe has taken over the escape system. Clear eight increasingly difficult C challenges—including a side-by-side code showdown—then crack the final vault before time runs out.</p>
+          <p>BUG.exe has sealed the facility. Solve your team’s three C challenges, collect three key digits, and unlock the escape vault before the 10-minute countdown ends.</p>
           <p class="muted">Warning: the compiler is in a terrible mood today.</p>
         </div>
       </div>
       <div class="setup-row">
+        <label for="teamNumber">TEAM NUMBER</label>
+        <select id="teamNumber" required><option value="1">Team 1</option><option value="2">Team 2</option><option value="3">Team 3</option><option value="4">Team 4</option><option value="5">Team 5</option></select>
         <label for="teamName">TEAM NAME</label>
-        <input id="teamName" maxlength="24" required placeholder="e.g. Segmentation Fault" autocomplete="off" />
+        <input id="teamName" maxlength="24" required placeholder="Enter your team name" autocomplete="off" />
         <label for="roomPasscode">ROOM PASSCODE</label>
         <input id="roomPasscode" maxlength="16" required placeholder="Enter previous-room passcode" autocomplete="off" autocapitalize="characters" spellcheck="false" />
         <button class="primary-btn" id="startBtn" type="button">INITIALIZE MISSION <span>→</span></button>
       </div>
-      <p class="tiny-note">25:00 timer · 8 escalating levels · hints cost 3 points · 2 final-vault attempts · passcode from previous room required</p>
+      <p class="tiny-note">10 MINUTES · 3 QUESTIONS · 1 KEY PER CORRECT ANSWER</p>
     </section>
 
     <section class="game-layout hidden" id="game">
+      <section class="world-banner" id="worldBanner" aria-label="Current escape-room sector">
+        <div class="world-backdrop" id="worldBackdrop" aria-hidden="true"></div>
+        <div class="world-atmosphere" aria-hidden="true"><span class="world-scanbeam"></span><span class="world-glint glint-a"></span><span class="world-glint glint-b"></span><span class="world-glint glint-c"></span></div>
+        <div class="world-topline">
+          <div class="world-location"><span class="world-live-dot"></span><span id="worldSector">SECTOR 01 / ACCESS HUB</span></div>
+          <div class="world-status-chip"><span class="world-status-icon">◈</span><span id="worldMood">CORRUPTION DETECTED</span></div>
+        </div>
+        <div class="world-bottomline">
+          <div class="companion-stage"><img src="assets/byte-mascot.webp" alt="Byte, your mission companion" /><span class="companion-shadow"></span></div>
+          <div class="world-story">
+            <div class="world-story-kicker" id="worldKicker">MISSION 01 // POWER RESTORATION</div>
+            <h2 id="worldTitle">The Access Hub</h2>
+            <p id="worldNarrative">The facility has gone dark. Recover your first key shard to wake the route map.</p>
+            <div class="world-objective"><span class="objective-pip"></span><span id="worldObjective">OBJECTIVE: REPAIR THE ACCESS FILTER</span></div>
+          </div>
+          <div class="world-route-wrap">
+            <div class="world-route-heading"><span>SECTOR MAP</span><strong id="worldMapCount">0 <small>/ 3 SHARDS</small></strong></div>
+            <div class="world-route" id="worldRoute" role="img" aria-label="Eight-room progress map">
+              <span class="route-line"></span>
+              <span class="world-map-node active" data-map-stage="0"><i>01</i><b>HUB</b></span>
+              <span class="world-map-node locked" data-map-stage="1"><i>02</i><b>LOOP</b></span>
+              <span class="world-map-node locked" data-map-stage="2"><i>03</i><b>PAIR</b></span>
+              <span class="world-map-node locked" data-map-stage="3"><i>04</i><b>FORK</b></span>
+              <span class="world-map-node locked" data-map-stage="4"><i>05</i><b>CORE</b></span>
+              <span class="world-map-node locked" data-map-stage="5"><i>06</i><b>ARRAY</b></span>
+              <span class="world-map-node locked" data-map-stage="6"><i>07</i><b>DIGIT</b></span>
+              <span class="world-map-node locked" data-map-stage="7"><i>08</i><b>VAULT</b></span>
+            </div>
+            <div class="shard-progress"><span class="shard-progress-fill" id="shardProgressFill"></span></div>
+          </div>
+        </div>
+        <div class="world-footnote"><span>BYTE // FIELD COMPANION</span><span><i></i> ROOM VISUALIZER ONLINE</span></div>
+      </section>
       <aside class="sidebar panel">
         <div class="panel-heading">MISSION CONTROL <span class="heading-code">LIVE</span></div>
         <div class="timer-wrap">
           <div class="timer-label">TIME REMAINING</div>
-          <div class="timer" id="timer">25:00</div>
+          <div class="timer" id="timer">10:00</div>
           <div class="timer-track"><div id="timerBar"></div></div>
         </div>
         <div class="team-card"><span class="muted small">ACTIVE TEAM</span><strong id="activeTeam">UNNAMED TEAM</strong></div>
@@ -66,7 +108,7 @@
           <div><span class="muted small">SCORE</span><strong id="score">0</strong></div>
           <div><span class="muted small">HINTS USED</span><strong id="hintsUsed">0</strong></div>
         </div>
-        <div class="progress-title"><span>ACCESS PROGRESS</span><span id="progressText">0 / 8</span></div>
+        <div class="progress-title"><span>ACCESS PROGRESS</span><span id="progressText">0 / 3</span></div>
         <div class="progress-track"><div id="progressBar"></div></div>
         <div class="stage-list" id="stageList">
           <div class="stage-item active" data-stage="0"><span class="stage-number">01</span><span><strong>THE ACCESS FILTER</strong><small>Multi-condition logic</small></span><span class="stage-state">●</span></div>
@@ -97,6 +139,7 @@ for (i = 0; i &lt; 5; i++) {
 }
 printf("%d", count);</div>
           </div>
+          <div class="answer-options hidden" id="optionsPanel" aria-label="Answer options"></div>
           <div class="question-row"><span class="question-icon">?</span><p id="questionText">What value is printed?</p></div>
           <form id="answerForm">
             <label for="answerInput" id="answerLabel">ENTER YOUR ANSWER</label>
@@ -110,7 +153,7 @@ printf("%d", count);</div>
     </section>
 
     <section class="final-screen panel hidden" id="finalScreen">
-      <div class="victory-icon" id="finalIcon">✓</div>
+      <div class="final-art-glow" aria-hidden="true"></div><div class="victory-icon" id="finalIcon">✓</div>
       <div class="eyebrow centered">MISSION REPORT / FINAL</div>
       <h2 id="finalTitle">SYSTEM RESTORED</h2>
       <p id="finalMessage">You defeated BUG.exe. The compiler is mildly impressed.</p>
@@ -127,6 +170,10 @@ printf("%d", count);</div>
   </main>
 
   <footer><span>ESC-C-APE · C PROGRAMMING ESCAPE ROOM</span><span>THINK CLEARLY. CODE CAREFULLY.</span></footer>
+  <div class="level-transition hidden" id="levelTransition" aria-hidden="true">
+    <div class="transition-art" id="transitionArt"></div><div class="transition-vignette"></div>
+    <div class="transition-content"><div class="transition-kicker" id="transitionKicker">GATE UNLOCKED</div><div class="transition-emblem"><span></span><span></span><span></span></div><h2 id="transitionTitle">MOVING TO NEXT SECTOR</h2><p id="transitionMessage">Stabilizing the route...</p><div class="transition-progress"><span></span></div></div>
+  </div>
   <div class="key-reveal hidden" id="keyReveal" role="status" aria-live="assertive"><span>KEY ACQUIRED</span><strong id="earnedKey">?</strong></div>
   <div class="code-modal hidden" id="codeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="code-modal-card"><div class="victory-icon">✓</div><p class="puzzle-kicker">VAULT ACCESS CONFIRMED</p><h2 id="modalTitle">ESCAPE CODE ACCEPTED</h2><p>The vault is opening. Get ready for your mission report.</p></div></div>
   <button class="notepad-launch hidden" id="notepadToggle" type="button" aria-expanded="false" aria-controls="notepadPanel">✎ TEAM NOTEPAD</button>
