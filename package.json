@@ -1,0 +1,3 @@
+{"name":"esc-c-ape-mern","version":"1.0.0","private":true,
+ "scripts":{"setup":"npm install && npm install --prefix client","build":"npm run build --prefix client","start":"node server/index.js","dev:server":"node server/index.js","dev:client":"npm run dev --prefix client"},
+ "dependencies":{"express":"4.19.2","mongoose":"8.5.1"}}

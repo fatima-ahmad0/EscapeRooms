@@ -1,0 +1,24 @@
+ORGANISER ANSWER KEY (do not share with teams)
+All 15 questions were traced by hand and cross-checked. Debug questions: students enter the SUM of the faulty line numbers (syntax and logic errors both count).
+
+Team 1 Q1: T | digit 4
+Team 1 Q2: faulty lines 2,3,5,6,7,10 (sum 33) | digit 3
+Team 1 Q3: A | digit 6
+Team 2 Q1: C | digit 7
+Team 2 Q2: faulty lines 2,6,7,8 (sum 23) | digit 8
+Team 2 Q3: B | digit 2
+Team 3 Q1: 338 | digit 2
+Team 3 Q2: faulty lines 2,4,5,6,8,9 (sum 34) | digit 1
+Team 3 Q3: A | digit 8
+Team 4 Q1: 100 | digit 9
+Team 4 Q2: faulty lines 3,5,6,9,10 (sum 33) | digit 5
+Team 4 Q3: C | digit 4
+Team 5 Q1: 455 | digit 6
+Team 5 Q2: faulty lines 3,5,6,7,10,11 (sum 42) | digit 0
+Team 5 Q3: A | digit 1
+
+Team 1: enter KEY8610 -> vault code 436
+Team 2: enter KEY8610 -> vault code 782
+Team 3: enter KEY8610 -> vault code 218
+Team 4: enter KEY8610 -> vault code 954
+Team 5: enter KEY8610 -> vault code 601
