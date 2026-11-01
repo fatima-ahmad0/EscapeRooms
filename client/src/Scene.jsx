@@ -40,7 +40,7 @@ function Sparks({burst}){
   return <points ref={g} frustumCulled={false}><bufferGeometry><bufferAttribute attach="attributes-position" args={[P,3]}/></bufferGeometry>
     <pointsMaterial color="#ffd27a" size={.16} transparent depthWrite={false} blending={THREE.AdditiveBlending}/></points>
 }
-function Pulse({i}){ // energy orb flies from a solved terminal to its lamp on the vault wall
+function Pulse({i}){ // visual energy pulse travels from a solved terminal to its lamp on the vault wall
   const r=useRef(),t0=useRef(null)
   useFrame(({clock})=>{if(t0.current===null)t0.current=clock.elapsedTime;const u=Math.min(1,(clock.elapsedTime-t0.current)/1.1),e=u*u*(3-2*u)
     const m=new V3(X[i],2.6,-3).lerp(new V3([-.7,0,.7][i],4.9,-7.4),e);m.y+=Math.sin(u*Math.PI)*2;r.current.position.copy(m);r.current.scale.setScalar(u>=1?0:1)})
@@ -87,7 +87,7 @@ function World({phase,focus,solved,low,burst,pulse,shake,onPick}){
   const dL=useRef(),dR=useRef(),wheel=useRef(),dv=useRef(),glow=useRef(),bug=useRef(),a1=useRef(),a2=useRef(),tr=useRef(),dust=useRef()
   const dpos=useMemo(()=>{const a=new Float32Array(780);for(let i=0;i<260;i++){a[i*3]=(Math.random()-.5)*14;a[i*3+1]=Math.random()*6.5;a[i*3+2]=(Math.random()-.5)*14}return a},[])
   const win=phase==='win',ev=useRef({}),shock=useRef(),bolts=useRef(),vl=useRef(),r1=useRef(),r2=useRef(),rays=useRef()
-  useFrame(({clock},dt)=>{ // w = seconds since the vault code was accepted; this is the opening timeline
+  useFrame(({clock},dt)=>{ // w = seconds since all three terminals were solved; this is the opening timeline
     const t=clock.elapsedTime;if(ph0.current.p!==phase){ph0.current={p:phase,t};ev.current={}}
     const e=t-ph0.current.t,w=win?e:-1
     if(win&&e>5&&!sw)setSw(true);if(!win&&sw)setSw(false)

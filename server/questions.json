@@ -1,1 +1,384 @@
-[{"entry": "KEY8610", "d": [4, 3, 6], "q": [{"t": "out", "n": "The Divisor Test", "h": "27 has more than two positive divisors, so the condition f == 2 is false and the else branch runs.", "p": 20, "c": ["int num = 27, f = 0;", "for (int i = 1; i <= num; i++) {", "    if (num % i == 0)", "        f++;", "}", "if (f == 2)", "    printf(\"F\");", "else", "    printf(\"T\");"], "a": ["T"], "q": "What character is printed?", "e": "Correct output: T. 27 has more than two positive divisors, so the condition f == 2 is false and the else branch runs."}, {"t": "err", "n": "The Error-Line Sum", "h": "Check the include directive, the main declaration, the loop\u2019s upper limit, the C comparison operator, the malformed printf statement, and the missing semicolon.", "p": 30, "c": ["// This program calculates and prints the cube of odd numbers less than 17 using a for loop.", "#include <stdioh>", "int main( {", "    int i;", "    for (i = 1; i <= 17; i++) {", "        if (i % 2 !== 0) {", "            printf(\"Cube of %d = %d\\n, i, i * i * i);", "        }", "    }", "    return 0", "}"], "b": [2, 3, 5, 6, 7, 10], "e": "Faulty lines: 2, 3, 5, 6, 7, 10. Check the include directive, the main declaration, the loop\u2019s upper limit, the C comparison operator, the malformed printf statement, and the missing semicolon."}, {"t": "mcq", "n": "The Number Staircase", "h": "Row 1 prints 1 once, row 2 prints 2 twice, and so on through five 5s. The printf format has no spaces between numbers.", "p": 30, "c": ["for (int i = 1; i <= 5; i++) {", "    for (int j = 1; j <= i; j++) {", "        printf(\"%d\", i);", "    }", "    printf(\"\\n\");", "}"], "o": ["1\n22\n333\n4444\n55555", "1\n2 2\n3 3 3\n4 4 4 4\n5 5 5 5 5", "1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5", "1 1 1 1 1\n2 2 2 2 2\n3 3 3 3 3\n4 4 4 4 4\n5 5 5 5 5"], "a": 0, "q": "Which option matches the output?", "e": "Correct option: A. Row 1 prints 1 once, row 2 prints 2 twice, and so on through five 5s. The printf format has no spaces between numbers."}]}, {"entry": "KEY8610", "d": [7, 8, 2], "q": [{"t": "mcq", "n": "The Cool Number Check", "h": "The less-than condition must apply to both divisibility possibilities. Group the OR test in parentheses.", "p": 20, "c": ["// Requirement:", "num < 100 AND (divisible by 2 OR divisible by 5)"], "o": ["if (num <= 100 && (num % 2 == 0 || num % 5 == 0))", "if (num < 100 && num % 2 == 0 || num % 5 == 0)", "if (num < 100 && (num % 2 == 0 || num % 5 == 0))", "if (num < 100 || (num % 2 == 0 && num % 5 == 0))"], "a": 2, "q": "Which snippet is correct?", "e": "Correct option: C. The less-than condition must apply to both divisibility possibilities. Group the OR test in parentheses."}, {"t": "err", "n": "The Square-Code Debugger", "h": "Check the preprocessor directive, the condition operator, the malformed printf string, and the newline escape sequence.", "p": 30, "c": ["// This program calculates and prints the squares of even numbers less than 10 using a for loop.", "include <stdio.h>", "int main() {", "    int i;", "    for (i = 0; i < 10; i++) {", "        if (i % 2 = 0) {", "            printf(\"Square of %d = %d, i, i * i);", "            printf(\"/n\");", "        }", "    }", "    return 0;", "}"], "b": [2, 6, 7, 8], "e": "Faulty lines: 2, 6, 7, 8. Check the preprocessor directive, the condition operator, the malformed printf string, and the newline escape sequence."}, {"t": "mcq", "n": "The Star Grid", "h": "Each of the five outer-loop passes prints five stars because j runs from 0 to 4.", "p": 30, "c": ["for (int i = 0; i < 5; i++) {", "    for (int j = 0; j < 5; j++) {", "        printf(\"* \");", "    }", "    printf(\"\\n\");", "}"], "o": ["* * * *\n* * * *\n* * * *\n* * * *", "* * * * *\n* * * * *\n* * * * *\n* * * * *\n* * * * *", "*\n* *\n* * *\n* * * *\n* * * * *", "* * * * *\n* * * *\n* * *\n* *\n*"], "a": 1, "q": "Which option matches the output?", "e": "Correct option: B. Each of the five outer-loop passes prints five stars because j runs from 0 to 4."}]}, {"entry": "KEY8610", "d": [2, 1, 8], "q": [{"t": "out", "n": "The Sum Filter", "h": "111, 112, and 114 satisfy the condition. Add them, then ++sum increases the result by one before printing.", "p": 20, "c": ["int sum = 0;", "for (int x = 111; x <= 114; x++) {", "    if ((x % 2 == 0 && x % 3 == 0) ||", "        (x % 2 == 0 && x % 3 != 0) ||", "        (x % 2 != 0 && x % 3 == 0)) {", "        sum += x;", "    }", "}", "printf(\"%d\", ++sum);"], "a": ["338"], "q": "What is printed?", "e": "Correct output: 338. 111, 112, and 114 satisfy the condition. Add them, then ++sum increases the result by one before printing."}, {"t": "err", "n": "The Sum-of-Squares Bug", "h": "Check the misspelled include directive, the missing semicolon after the variable declaration, the loop bound against numbers less than 11, the incorrect sum-of-squares expression, the newline escape, and the return statement\u2019s missing semicolon.", "p": 30, "c": ["// Sum of squares of odd numbers less than 11", "#inclde <stdio.h>", "int main() {", "    int sum = 0", "    for (int i = 1; i <= 11; i += 2) {", "        sum += i + i;", "    }", "    printf(\"Sum = %d/n\", sum);", "    return 0", "}"], "b": [2, 4, 5, 6, 8, 9], "e": "Faulty lines: 2, 4, 5, 6, 8, 9. Check the misspelled include directive, the missing semicolon after the variable declaration, the loop bound against numbers less than 11, the incorrect sum-of-squares expression, the newline escape, and the return statement\u2019s missing semicolon."}, {"t": "mcq", "n": "The Star Staircase", "h": "Row 1 prints one star, row 2 prints two, and the count increases by one each row.", "p": 30, "c": ["for (int i = 1; i <= 5; i++) {", "    for (int j = 1; j <= i; j++) {", "        printf(\"* \");", "    }", "    printf(\"\\n\");", "}"], "o": ["*\n* *\n* * *\n* * * *\n* * * * *", "* * * * *\n* * * *\n* * *\n* *\n*", "* * * * *\n* * * * *\n* * * * *\n* * * * *\n* * * * *", "*\n* * *\n* * * * *\n* * * * * * *\n* * * * * * * * *"], "a": 0, "q": "Which option matches the output?", "e": "Correct option: A. Row 1 prints one star, row 2 prints two, and the count increases by one each row."}]}, {"entry": "KEY8610", "d": [9, 5, 4], "q": [{"t": "out", "n": "The Final Counter", "h": "Add 14, 21, 28, and 35. Then account for final++ and the +1 in printf.", "p": 20, "c": ["int final = 0;", "for (int i = 1; i <= 40; i++) {", "    if (i % 7 == 0 && i > 10)", "        final += i;", "}", "final++;", "printf(\"%d\", final + 1);"], "a": ["100"], "q": "What is printed?", "e": "Correct output: 100. Add 14, 21, 28, and 35. Then account for final++ and the +1 in printf."}, {"t": "err", "n": "The Factorial Loop Failure", "h": "Check the header, factorial accumulator initialization, loop direction, output function name, and missing semicolon.", "p": 30, "c": ["// Calculate the factorial of 5", "// Factorial multiplies all positive integers from 1 through 5: 1 * 2 * 3 * 4 * 5.", "#include <stdio>", "int main() {", "    int i, fact = 0;", "    for (i = 1; i <= 5; i--) {", "        fact *= i;", "    }", "    print(\"Factorial = %d\\n\", fact);", "    return 0", "}"], "b": [3, 5, 6, 9, 10], "e": "Faulty lines: 3, 5, 6, 9, 10. Check the header, factorial accumulator initialization, loop direction, output function name, and missing semicolon."}, {"t": "mcq", "n": "The Number Ramp", "h": "The first row prints 1 through 5. Each next row has one fewer number, starting again at 1.", "p": 30, "c": ["for (int i = 5; i >= 1; i--) {", "    for (int j = 1; j <= i; j++) {", "        printf(\"%d \", j);", "    }", "    printf(\"\\n\");", "}"], "o": ["1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5", "5 4 3 2 1\n4 3 2 1\n3 2 1\n2 1\n1", "1 2 3 4 5\n1 2 3 4\n1 2 3\n1 2\n1", "1 2 3 4 5\n2 3 4 5\n3 4 5\n4 5\n5"], "a": 2, "q": "Which option matches the output?", "e": "Correct option: C. The first row prints 1 through 5. Each next row has one fewer number, starting again at 1."}]}, {"entry": "KEY8610", "d": [6, 0, 1], "q": [{"t": "out", "n": "The Descending Sum", "h": "The condition is true for values divisible by 3. Only 456 qualifies in this loop; then --sum subtracts one before printing.", "p": 20, "c": ["int sum = 0;", "for (int i = 457; i >= 454; i--) {", "    if ((i % 3 == 0 && i % 2 != 0) ||", "        (i % 2 == 0 && i % 3 == 0)) {", "        sum += i;", "    }", "}", "printf(\"%d\", --sum);"], "a": ["455"], "q": "What is the output?", "e": "Correct output: 455. The condition is true for values divisible by 3. Only 456 qualifies in this loop; then --sum subtracts one before printing."}, {"t": "err", "n": "The Divisibility Counter Bug", "h": "Check the main declaration, loop update, equality test, missing semicolon, printf argument separator, and misspelled return keyword.", "p": 30, "c": ["// Count numbers divisible by 3 from 1 to 12", "#include <stdio.h>", "int main {", "    int i, count = 0;", "    for (i = 1; i <= 12; i+1) {", "        if (i % 3 = 0) {", "            count++", "        }", "    }", "    printf(\"Count = %d\\n\" count);", "    retun 0;", "}"], "b": [3, 5, 6, 7, 10, 11], "e": "Faulty lines: 3, 5, 6, 7, 10, 11. Check the main declaration, loop update, equality test, missing semicolon, printf argument separator, and misspelled return keyword."}, {"t": "mcq", "n": "The Reverse Number Steps", "h": "Every row begins at 5; the lower limit j >= i removes one number from the right each row.", "p": 30, "c": ["for (int i = 1; i <= 5; i++) {", "    for (int j = 5; j >= i; j--) {", "        printf(\"%d \", j);", "    }", "    printf(\"\\n\");", "}"], "o": ["5 4 3 2 1\n5 4 3 2\n5 4 3\n5 4\n5", "5\n4 5\n3 4 5\n2 3 4 5\n1 2 3 4 5", "5 4 3 2 1\n4 3 2 1\n3 2 1\n2 1\n1", "1 2 3 4 5\n1 2 3 4\n1 2 3\n1 2\n1"], "a": 0, "q": "Which option matches the output?", "e": "Correct option: A. Every row begins at 5; the lower limit j >= i removes one number from the right each row."}]}]
+[
+  {
+    "entry": "KEY8610",
+    "q": [
+      {
+        "t": "out",
+        "n": "The Divisor Test",
+        "h": "27 has more than two positive divisors, so the condition f == 2 is false and the else branch runs.",
+        "p": 20,
+        "c": [
+          "int num = 27, f = 0;",
+          "for (int i = 1; i <= num; i++) {",
+          "    if (num % i == 0)",
+          "        f++;",
+          "}",
+          "if (f == 2)",
+          "    printf(\"F\");",
+          "else",
+          "    printf(\"T\");"
+        ],
+        "a": [
+          "T"
+        ],
+        "q": "What character is printed?",
+        "e": "Correct output: T. 27 has more than two positive divisors, so the condition f == 2 is false and the else branch runs."
+      },
+      {
+        "t": "err",
+        "n": "The Error-Line Sum",
+        "h": "Check the include directive, the main declaration, the loop’s upper limit, the C comparison operator, the malformed printf statement, and the missing semicolon.",
+        "p": 30,
+        "c": [
+          "// This program calculates and prints the cube of odd numbers less than 17 using a for loop.",
+          "#include <stdioh>",
+          "int main( {",
+          "    int i;",
+          "    for (i = 1; i <= 17; i++) {",
+          "        if (i % 2 !== 0) {",
+          "            printf(\"Cube of %d = %d\\n, i, i * i * i);",
+          "        }",
+          "    }",
+          "    return 0",
+          "}"
+        ],
+        "b": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          10
+        ],
+        "e": "Faulty lines: 2, 3, 5, 6, 7, 10. Check the include directive, the main declaration, the loop’s upper limit, the C comparison operator, the malformed printf statement, and the missing semicolon."
+      },
+      {
+        "t": "mcq",
+        "n": "The Number Staircase",
+        "h": "Row 1 prints 1 once, row 2 prints 2 twice, and so on through five 5s. The printf format has no spaces between numbers.",
+        "p": 30,
+        "c": [
+          "for (int i = 1; i <= 5; i++) {",
+          "    for (int j = 1; j <= i; j++) {",
+          "        printf(\"%d\", i);",
+          "    }",
+          "    printf(\"\\n\");",
+          "}"
+        ],
+        "o": [
+          "1\n22\n333\n4444\n55555",
+          "1\n2 2\n3 3 3\n4 4 4 4\n5 5 5 5 5",
+          "1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5",
+          "1 1 1 1 1\n2 2 2 2 2\n3 3 3 3 3\n4 4 4 4 4\n5 5 5 5 5"
+        ],
+        "a": 0,
+        "q": "Which option matches the output?",
+        "e": "Correct option: A. Row 1 prints 1 once, row 2 prints 2 twice, and so on through five 5s. The printf format has no spaces between numbers."
+      }
+    ]
+  },
+  {
+    "entry": "KEY8610",
+    "q": [
+      {
+        "t": "mcq",
+        "n": "The Cool Number Check",
+        "h": "The less-than condition must apply to both divisibility possibilities. Group the OR test in parentheses.",
+        "p": 20,
+        "c": [
+          "// Requirement:",
+          "num < 100 AND (divisible by 2 OR divisible by 5)"
+        ],
+        "o": [
+          "if (num <= 100 && (num % 2 == 0 || num % 5 == 0))",
+          "if (num < 100 && num % 2 == 0 || num % 5 == 0)",
+          "if (num < 100 && (num % 2 == 0 || num % 5 == 0))",
+          "if (num < 100 || (num % 2 == 0 && num % 5 == 0))"
+        ],
+        "a": 2,
+        "q": "Which snippet is correct?",
+        "e": "Correct option: C. The less-than condition must apply to both divisibility possibilities. Group the OR test in parentheses."
+      },
+      {
+        "t": "err",
+        "n": "The Square-Code Debugger",
+        "h": "Check the preprocessor directive, the condition operator, the malformed printf string, and the newline escape sequence.",
+        "p": 30,
+        "c": [
+          "// This program calculates and prints the squares of even numbers less than 10 using a for loop.",
+          "include <stdio.h>",
+          "int main() {",
+          "    int i;",
+          "    for (i = 0; i < 10; i++) {",
+          "        if (i % 2 = 0) {",
+          "            printf(\"Square of %d = %d, i, i * i);",
+          "            printf(\"/n\");",
+          "        }",
+          "    }",
+          "    return 0;",
+          "}"
+        ],
+        "b": [
+          2,
+          6,
+          7,
+          8
+        ],
+        "e": "Faulty lines: 2, 6, 7, 8. Check the preprocessor directive, the condition operator, the malformed printf string, and the newline escape sequence."
+      },
+      {
+        "t": "mcq",
+        "n": "The Star Grid",
+        "h": "Each of the five outer-loop passes prints five stars because j runs from 0 to 4.",
+        "p": 30,
+        "c": [
+          "for (int i = 0; i < 5; i++) {",
+          "    for (int j = 0; j < 5; j++) {",
+          "        printf(\"* \");",
+          "    }",
+          "    printf(\"\\n\");",
+          "}"
+        ],
+        "o": [
+          "* * * *\n* * * *\n* * * *\n* * * *",
+          "* * * * *\n* * * * *\n* * * * *\n* * * * *\n* * * * *",
+          "*\n* *\n* * *\n* * * *\n* * * * *",
+          "* * * * *\n* * * *\n* * *\n* *\n*"
+        ],
+        "a": 1,
+        "q": "Which option matches the output?",
+        "e": "Correct option: B. Each of the five outer-loop passes prints five stars because j runs from 0 to 4."
+      }
+    ]
+  },
+  {
+    "entry": "KEY8610",
+    "q": [
+      {
+        "t": "out",
+        "n": "The Sum Filter",
+        "h": "111, 112, and 114 satisfy the condition. Add them, then ++sum increases the result by one before printing.",
+        "p": 20,
+        "c": [
+          "int sum = 0;",
+          "for (int x = 111; x <= 114; x++) {",
+          "    if ((x % 2 == 0 && x % 3 == 0) ||",
+          "        (x % 2 == 0 && x % 3 != 0) ||",
+          "        (x % 2 != 0 && x % 3 == 0)) {",
+          "        sum += x;",
+          "    }",
+          "}",
+          "printf(\"%d\", ++sum);"
+        ],
+        "a": [
+          "338"
+        ],
+        "q": "What is printed?",
+        "e": "Correct output: 338. 111, 112, and 114 satisfy the condition. Add them, then ++sum increases the result by one before printing."
+      },
+      {
+        "t": "err",
+        "n": "The Sum-of-Squares Bug",
+        "h": "Check the misspelled include directive, the missing semicolon after the variable declaration, the loop bound against numbers less than 11, the incorrect sum-of-squares expression, the newline escape, and the return statement’s missing semicolon.",
+        "p": 30,
+        "c": [
+          "// Sum of squares of odd numbers less than 11",
+          "#inclde <stdio.h>",
+          "int main() {",
+          "    int sum = 0",
+          "    for (int i = 1; i <= 11; i += 2) {",
+          "        sum += i + i;",
+          "    }",
+          "    printf(\"Sum = %d/n\", sum);",
+          "    return 0",
+          "}"
+        ],
+        "b": [
+          2,
+          4,
+          5,
+          6,
+          8,
+          9
+        ],
+        "e": "Faulty lines: 2, 4, 5, 6, 8, 9. Check the misspelled include directive, the missing semicolon after the variable declaration, the loop bound against numbers less than 11, the incorrect sum-of-squares expression, the newline escape, and the return statement’s missing semicolon."
+      },
+      {
+        "t": "mcq",
+        "n": "The Star Staircase",
+        "h": "Row 1 prints one star, row 2 prints two, and the count increases by one each row.",
+        "p": 30,
+        "c": [
+          "for (int i = 1; i <= 5; i++) {",
+          "    for (int j = 1; j <= i; j++) {",
+          "        printf(\"* \");",
+          "    }",
+          "    printf(\"\\n\");",
+          "}"
+        ],
+        "o": [
+          "*\n* *\n* * *\n* * * *\n* * * * *",
+          "* * * * *\n* * * *\n* * *\n* *\n*",
+          "* * * * *\n* * * * *\n* * * * *\n* * * * *\n* * * * *",
+          "*\n* * *\n* * * * *\n* * * * * * *\n* * * * * * * * *"
+        ],
+        "a": 0,
+        "q": "Which option matches the output?",
+        "e": "Correct option: A. Row 1 prints one star, row 2 prints two, and the count increases by one each row."
+      }
+    ]
+  },
+  {
+    "entry": "KEY8610",
+    "q": [
+      {
+        "t": "out",
+        "n": "The Final Counter",
+        "h": "Add 14, 21, 28, and 35. Then account for final++ and the +1 in printf.",
+        "p": 20,
+        "c": [
+          "int final = 0;",
+          "for (int i = 1; i <= 40; i++) {",
+          "    if (i % 7 == 0 && i > 10)",
+          "        final += i;",
+          "}",
+          "final++;",
+          "printf(\"%d\", final + 1);"
+        ],
+        "a": [
+          "100"
+        ],
+        "q": "What is printed?",
+        "e": "Correct output: 100. Add 14, 21, 28, and 35. Then account for final++ and the +1 in printf."
+      },
+      {
+        "t": "err",
+        "n": "The Factorial Loop Failure",
+        "h": "Check the header, factorial accumulator initialization, loop direction, output function name, and missing semicolon.",
+        "p": 30,
+        "c": [
+          "// Calculate the factorial of 5",
+          "// Factorial multiplies all positive integers from 1 through 5: 1 * 2 * 3 * 4 * 5.",
+          "#include <stdio>",
+          "int main() {",
+          "    int i, fact = 0;",
+          "    for (i = 1; i <= 5; i--) {",
+          "        fact *= i;",
+          "    }",
+          "    print(\"Factorial = %d\\n\", fact);",
+          "    return 0",
+          "}"
+        ],
+        "b": [
+          3,
+          5,
+          6,
+          9,
+          10
+        ],
+        "e": "Faulty lines: 3, 5, 6, 9, 10. Check the header, factorial accumulator initialization, loop direction, output function name, and missing semicolon."
+      },
+      {
+        "t": "mcq",
+        "n": "The Number Ramp",
+        "h": "The first row prints 1 through 5. Each next row has one fewer number, starting again at 1.",
+        "p": 30,
+        "c": [
+          "for (int i = 5; i >= 1; i--) {",
+          "    for (int j = 1; j <= i; j++) {",
+          "        printf(\"%d \", j);",
+          "    }",
+          "    printf(\"\\n\");",
+          "}"
+        ],
+        "o": [
+          "1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5",
+          "5 4 3 2 1\n4 3 2 1\n3 2 1\n2 1\n1",
+          "1 2 3 4 5\n1 2 3 4\n1 2 3\n1 2\n1",
+          "1 2 3 4 5\n2 3 4 5\n3 4 5\n4 5\n5"
+        ],
+        "a": 2,
+        "q": "Which option matches the output?",
+        "e": "Correct option: C. The first row prints 1 through 5. Each next row has one fewer number, starting again at 1."
+      }
+    ]
+  },
+  {
+    "entry": "KEY8610",
+    "q": [
+      {
+        "t": "out",
+        "n": "The Descending Sum",
+        "h": "The condition is true for values divisible by 3. Only 456 qualifies in this loop; then --sum subtracts one before printing.",
+        "p": 20,
+        "c": [
+          "int sum = 0;",
+          "for (int i = 457; i >= 454; i--) {",
+          "    if ((i % 3 == 0 && i % 2 != 0) ||",
+          "        (i % 2 == 0 && i % 3 == 0)) {",
+          "        sum += i;",
+          "    }",
+          "}",
+          "printf(\"%d\", --sum);"
+        ],
+        "a": [
+          "455"
+        ],
+        "q": "What is the output?",
+        "e": "Correct output: 455. The condition is true for values divisible by 3. Only 456 qualifies in this loop; then --sum subtracts one before printing."
+      },
+      {
+        "t": "err",
+        "n": "The Divisibility Counter Bug",
+        "h": "Check the main declaration, loop update, equality test, missing semicolon, printf argument separator, and misspelled return keyword.",
+        "p": 30,
+        "c": [
+          "// Count numbers divisible by 3 from 1 to 12",
+          "#include <stdio.h>",
+          "int main {",
+          "    int i, count = 0;",
+          "    for (i = 1; i <= 12; i+1) {",
+          "        if (i % 3 = 0) {",
+          "            count++",
+          "        }",
+          "    }",
+          "    printf(\"Count = %d\\n\" count);",
+          "    retun 0;",
+          "}"
+        ],
+        "b": [
+          3,
+          5,
+          6,
+          7,
+          10,
+          11
+        ],
+        "e": "Faulty lines: 3, 5, 6, 7, 10, 11. Check the main declaration, loop update, equality test, missing semicolon, printf argument separator, and misspelled return keyword."
+      },
+      {
+        "t": "mcq",
+        "n": "The Reverse Number Steps",
+        "h": "Every row begins at 5; the lower limit j >= i removes one number from the right each row.",
+        "p": 30,
+        "c": [
+          "for (int i = 1; i <= 5; i++) {",
+          "    for (int j = 5; j >= i; j--) {",
+          "        printf(\"%d \", j);",
+          "    }",
+          "    printf(\"\\n\");",
+          "}"
+        ],
+        "o": [
+          "5 4 3 2 1\n5 4 3 2\n5 4 3\n5 4\n5",
+          "5\n4 5\n3 4 5\n2 3 4 5\n1 2 3 4 5",
+          "5 4 3 2 1\n4 3 2 1\n3 2 1\n2 1\n1",
+          "1 2 3 4 5\n1 2 3 4\n1 2 3\n1 2\n1"
+        ],
+        "a": 0,
+        "q": "Which option matches the output?",
+        "e": "Correct option: A. Every row begins at 5; the lower limit j >= i removes one number from the right each row."
+      }
+    ]
+  }
+]
